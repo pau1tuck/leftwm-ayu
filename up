@@ -21,15 +21,10 @@ fi
 
 # Restore desktop wallpaper(s)
 nitrogen --restore
-#if [ -x "$(command -v feh)" ]; then
-#feh --bg-scale "${PWD}/background.png"
-#  feh --bg-scale "$(cat ~/.background)"
-#fi
 
-# extra utils to make this theme a little more homey
-if [ -x "$(command -v dunst)" ]; then
-  dunst -config ~/.config/dunst/dunstrc &
-fi
+#if [ -x "$(command -v dunst)" ]; then
+#  dunst -config ~/.config/dunst/dunstrc &
+#fi
 
 # launch network-manager applet, but only if it's not already running
 if [ -x "$(command -v nm-applet)"]; then
@@ -37,7 +32,8 @@ if [ -x "$(command -v nm-applet)"]; then
 fi
 
 #boot a polybar for each monitor
-cd ${PWD}/polybar
-polybar -m | sed s/:.*// | tac | while read -r monitor; do
-  monitor=$monitor polybar -c config.ini main &>/tmp/polybar.log &
-done
+#cd ${PWD}/.config/polybar
+#polybar -m | sed s/:.*// | tac | while read -r monitor; do
+#  monitor=$monitor polybar -c config.ini main &>/tmp/polybar.log &
+#done
+polybar --config=${PWD}/.config/polybar/config.ini main &>/tmp/polybar.log &
